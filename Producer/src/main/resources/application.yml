@@ -1,0 +1,27 @@
+server:
+  port: 8091  #生产者端口
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 5 # 每隔5秒发送一次心跳
+    lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8076/eureka #注册中心ip地址
+spring:
+  application:
+    name: item-prodcer
+  datasource:
+    url: jdbc:mysql://localhost:3306/ego?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 30
+
+mybatis:
+  type-aliases-package: com.zxb.producer.Pojo

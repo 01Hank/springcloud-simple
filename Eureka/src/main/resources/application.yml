@@ -1,0 +1,19 @@
+server:
+  port: 8076  #注册中心端口号
+
+eureka:
+  client:
+    register-with-eureka: false #是否向注册中心注册自己
+    fetch-registry: false #是否检索服务
+    service-url:
+      defaultZone: http://127.0.0.1:${server.port}/eureka #注册中心ip地址
+  instance:
+    hostname: master  #访问的ip别名
+  server:
+    enable-self-preservation: false #关闭自我保护
+    eviction-interval-timer-in-ms: 5000 #每隔5秒进行一次服务清理
+
+spring:
+  application:
+    name: Eureka-server #项目名称
+
