@@ -7,14 +7,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Consumer" />
+        <module name="Druid" />
         <module name="Eureka" />
+        <module name="Gateway" />
         <module name="Producer" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Zuul" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Eureka" options="" />
+      <module name="Gateway" options="" />
       <module name="com-zxb" options="-parameters" />
     </option>
   </component>

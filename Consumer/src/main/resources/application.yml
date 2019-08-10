@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8076/eureka #注册中心ip地址
+      defaultZone: http://localhost:8076/eureka #注册中心ip地址
 
 spring:
   application:
