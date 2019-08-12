@@ -1,0 +1,45 @@
+server:
+  port: 8094
+logging:
+  level:
+    cn.javabb.bootdemo.mapper: info  #日志打印
+
+spring:
+  application:
+    name: item-druid
+  ego-datasource:
+    type: com.alibaba.druid.pool.DruidDataSource #使用druid数据源
+    url: jdbc:mysql://localhost:3306/ego?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 30
+
+  tpc-datasource:
+    type: com.alibaba.druid.pool.DruidDataSource #使用druid数据源
+    url: jdbc:mysql://localhost:3306/tpc?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 30
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 5 # 每隔5秒发送一次心跳
+    lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8076/eureka #注册中心ip地址
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.zxb.druid.Pojo
+
